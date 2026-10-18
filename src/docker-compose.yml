@@ -1,6 +1,17 @@
+version: '5.5.0'
 services:
-  catalog.api:
-    image: ${DOCKER_REGISTRY-}catalogapi
-    build:
-      context: .
-      dockerfile: Services/Catalog/Catalog.API/Dockerfile
+  CatalogDb:
+    image: postgres:latest
+    container_name: catalogpostgres_db
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: CatalogDb
+    ports:
+    - "5432:5432"
+    volumes:
+    - postgres_data:/var/lib/postgresql/data
+  
+volumes:
+    postgres_data:
+    

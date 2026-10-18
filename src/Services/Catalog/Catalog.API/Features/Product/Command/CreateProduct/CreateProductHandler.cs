@@ -25,7 +25,7 @@ namespace Catalog.API.Features.Product.Command.CreateProduct
 
             await documentSession.SaveChangesAsync(cancellationToken);
 
-            return Task.FromResult(new CreateProductResult(newProduct.Id));
+            return default;
         }
     }
 }
