@@ -11,7 +11,7 @@ namespace Catalog.API.Features.Product.Command.CreateProduct
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
-            var newProduct= new Catalog.API.Models.Product
+            var newProduct= new Catalog.API.Models.Products
             {
                 Id = Guid.NewGuid(),
                 Name = command.Name,
@@ -25,7 +25,7 @@ namespace Catalog.API.Features.Product.Command.CreateProduct
 
             await documentSession.SaveChangesAsync(cancellationToken);
 
-            return default;
+            return new CreateProductResult(newProduct.Id);
         }
     }
 }
