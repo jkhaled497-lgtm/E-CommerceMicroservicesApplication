@@ -30,7 +30,7 @@
 
             if(CurrentProduct is null)
             {
-                throw new ProductNotFoundException();
+                throw new ProductNotFoundException(request.Id);
             }
             var result = CurrentProduct.Adapt<ProductDTO>();
 
